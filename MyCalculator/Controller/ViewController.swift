@@ -25,11 +25,18 @@ class ViewController: UIViewController {
     
     
     func opHandler(_ op:Operator){
-        if let value = calculator.calculate(op){
-            if value.truncatingRemainder(dividingBy: 1) == 0{
-                outputLable.text = String(format: "%.0f", value)
+        let value = calculator.calculate(op)
+        if value.isFinite {
+            let isDecimalZero = value.truncatingRemainder(dividingBy: 1) == 0
+            let length = isDecimalZero ? String(value).count - 2 : String(value).count - 1
+            if length > 9{
+                outputLable.text = String(format: "%.9g", value)
             } else {
-                outputLable.text = String(value)
+                if isDecimalZero{
+                    outputLable.text = String(format: "%.0f", value)
+                } else {
+                    outputLable.text = String(value)
+                }
             }
         } else {
             outputLable.text = "错误"

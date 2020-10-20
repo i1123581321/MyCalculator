@@ -9,54 +9,40 @@ import Foundation
 
 class Calculator{
     var inputBuffer = InputBuffer()
-    var register = 0.0
+    var mainRegister = 0.0
     
-    func calculate(_ op:Operator) -> Double?{
+    
+    func calculate(_ op:Operator) -> Double{
         switch op{
         case let .input(symbol):
             inputBuffer.append(symbol)
+            mainRegister = inputBuffer.value ?? Double.nan
         default:
             print("TODO...")
         }
-        return inputBuffer.value
+        return mainRegister
     }
 }
 
 struct InputBuffer{
     var hasDot = false
-    var dotIndex = 0
     var buffer = ""
     
-    
-    var maxLen:Int{
-        hasDot && dotIndex < 10 ? 11 : 10
-    }
-    
-    var index:String.Index{
-        if buffer.count >= maxLen{
-            return buffer.index(buffer.startIndex, offsetBy: maxLen)
-        } else {
-            return buffer.endIndex
-        }
-    }
-    
     var value:Double?{
-        Double(buffer[..<index])
+        Double(buffer)
     }
     
     mutating func append(_ symbol:InputSymbol){
         switch symbol{
         case .dot:
             if !hasDot{
-                dotIndex = buffer.count
                 buffer += symbol.value
                 hasDot = true
             }
         default:
             buffer += symbol.value
         }
-        print("Real value: \(Double(buffer) ?? 0.0)")
-        print("Get value: \(value ?? 0.0)")
+        print(Double(buffer) ?? "0.0")
     }
     
     mutating func reset(){
