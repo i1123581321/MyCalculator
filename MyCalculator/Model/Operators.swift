@@ -50,6 +50,17 @@ enum BinaryOperator:Int{
             return {$0 * pow(10, $1)}
         }
     }
+    
+    var precedence:Int{
+        switch self{
+        case .powery, .rooty, .ee:
+            return 1
+        case .multiply, .divide:
+            return 2
+        case .plus, .minus:
+            return 3
+        }
+    }
 }
 
 enum UnaryOperator:Int{
