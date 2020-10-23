@@ -113,11 +113,11 @@ enum UnaryOperator:Int{
         case .factorial:
             return {(1...Int($0)).map(Double.init).reduce(1.0, *)}
         case .sine:
-            return sin
+            return {sin($0 * Double.pi / 180.0)}
         case .cosine:
-            return cos
+            return {sin($0 * Double.pi / 180.0)}
         case .tangent:
-            return tan
+            return {tan($0 * Double.pi / 180.0)}
         case .sineh:
             return sinh
         case .cosineh:

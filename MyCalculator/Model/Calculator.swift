@@ -26,6 +26,9 @@ class Calculator{
         case let .binary(bop):
             prev = (bop, mainRegister)
             binaryStack.push(bop, mainRegister)
+            if let last = binaryStack.peek{
+                mainRegister = last.operand
+            }
             inputBuffer.reset()
         case let .unary(uop):
             mainRegister = uop.op(mainRegister)
@@ -39,7 +42,7 @@ class Calculator{
         case .ac:
             inputBuffer.reset()
             binaryStack.reset()
-            memory.reset()
+//            memory.reset()
             mainRegister = 0.0
             prev = nil
         case .eq:
@@ -107,7 +110,7 @@ struct BinaryStack{
         var result = operand
         while !stack.isEmpty{
             let last = stack.removeLast()
-            result = last.op.op(last.operand, operand)
+            result = last.op.op(last.operand, result)
         }
         return result
     }

@@ -28,6 +28,7 @@
 		680D7597253DB250008ED160 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		68760765253EDD1B00BB32F4 /* Calculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
 		68760768253EEAD300BB32F4 /* Operators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operators.swift; sourceTree = "<group>"; };
+		68F2DD9B2542B4F80067FFBD /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +45,7 @@
 		680D757D253DB24D008ED160 = {
 			isa = PBXGroup;
 			children = (
+				68F2DD9B2542B4F80067FFBD /* README.md */,
 				680D7588253DB24D008ED160 /* MyCalculator */,
 				680D7587253DB24D008ED160 /* Products */,
 			);
